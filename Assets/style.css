@@ -1,0 +1,12 @@
+
+h1 {
+    text-align: center;
+    font-style: italic;
+    background-color: darkblue;
+    color: white;    
+}
+
+/* hiding the cards now so when the user inputs a city, the day day forcast will appear */
+div.card {
+    display: none;
+}
