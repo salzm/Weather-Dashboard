@@ -7,3 +7,13 @@ body {
   background-color: darkblue;
   text-align: center;
 }
+
+h2 {
+  text-align: center;
+  font-size: 80px;
+}
+/* trying to center return button */
+button {
+  color: red;
+  margin: auto;
+}
