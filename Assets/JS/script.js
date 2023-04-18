@@ -17,3 +17,4 @@ function handleSubmit() {
 function redrirectHome() {
   window.location.href = "index.html";
 }
+// Will fetch API for weather (https://openweathermap.org/forecast5)
