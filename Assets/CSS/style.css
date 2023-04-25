@@ -8,6 +8,6 @@
   text-align: center;
 }
 /* hiding the cards now so when the user inputs a city, the day day forcast will appear */
-div.card {
+.weatherCards {
   display: none;
 }
