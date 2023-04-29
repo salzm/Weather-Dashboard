@@ -53,7 +53,21 @@ const getApiData = () => {
     .then((data) => {
       console.log(data); // calling the API
 
-      //  Temp data
+      //temperature being displayed via js and html
+
+      let temperatureElement = document.querySelectorAll(
+        '*[id^="temperature"]'
+      );
+
+      let imageElement = document.querySelectorAll('*[id^="image"]');
+      console.log(imageElement);
+
+      let humidityElement = document.querySelectorAll('*[id^="humidity"]');
+
+      let dateElement = document.querySelectorAll('*[id^="date"]');
+
+      let weatherElement = document.querySelectorAll('*[id^="weatherStatus"]');
+      console.log(weatherElement);
 
       // For loop to go throught the api data set for 5 day forcast
 
@@ -61,17 +75,45 @@ const getApiData = () => {
         if ((i + 1) % 7 === 0) {
           weatherStuff.wind_speed.push(data.list[i].wind.speed);
           weatherStuff.temp.push(data.list[i].main.temp);
-          weatherStuff.humidity.push(data.list[i].humidity);
+          weatherStuff.humidity.push(data.list[i].main.humidity);
           weatherStuff.date.push(data.list[i].dt_txt);
-          weatherStuff.weather.push(data.list[i].description);
-          weatherStuff.imageUrl.push(data.list[i].wind.icon);
+          weatherStuff.weather.push(data.list[i].weather[0].description);
+          weatherStuff.imageUrl.push(data.list[i].weather[0].icon);
 
           // console.log(data.list[i].main.temp);
           // console.log(data.list[i].main.humidity);
           // console.log(data.list[i].dt_txt);
           // console.log(data.list[i].weather[0].description);
-          // console.log(data.list[i].weather[0].icon);
+
+          // console.log(data.list[i].humidity);
         }
+      }
+
+      let it = 0;
+      for (const element of temperatureElement) {
+        element.innerHTML = weatherStuff.temp[it];
+        it++;
+      }
+
+      let images = 0;
+      for (const element of imageElement) {
+        element.src = `https://openweathermap.org/img/wn/${weatherStuff.imageUrl[images]}@2x.png`;
+        images++;
+      }
+      let hum = 0;
+      for (const element of humidityElement) {
+        element.innerHTML = weatherStuff.humidity[hum];
+        hum++;
+      }
+      let dates = 0;
+      for (const element of dateElement) {
+        element.innerHTML = weatherStuff.date[dates];
+        dates++;
+      }
+      let weathers = 0;
+      for (const element of weatherElement) {
+        element.innerHTML = weatherStuff.weather[weathers];
+        weathers++;
       }
     });
 };
